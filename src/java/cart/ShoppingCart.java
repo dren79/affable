@@ -7,13 +7,15 @@
 package cart;
 
 import entity.*;
+import java.io.Serializable;
 import java.util.*;
+
 
 /**
  *
  * @david renton
  */
-public class ShoppingCart {
+public class ShoppingCart implements Serializable{
 
     List<ShoppingCartItem> items;
     int numberOfItems;

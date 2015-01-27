@@ -128,7 +128,7 @@ public class ControllerServlet extends HttpServlet {
             }
             List products = productFacade.findAll();
             request.setAttribute("productList",products);
-            userPath = "/products";
+            userPath = "/category";
            }// if updateCart action is called
 //        } else if (userPath.equals("/updateCart")) {
 //            // TODO: Implement update cart action
@@ -143,10 +143,10 @@ public class ControllerServlet extends HttpServlet {
         {
             List products = productFacade.findAll();
             request.setAttribute("productList",products);
-            userPath = "/products";
+            userPath = "/category";
    
         }
-        // use RequestDispatcher to forward request internally
+        // use RequestDispatcher to forward request internally  TODO:fix this shit!!
         String url = "/WEB-INF/view" + userPath + ".jsp";
 
         try {

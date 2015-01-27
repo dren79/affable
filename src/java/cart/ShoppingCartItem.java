@@ -7,12 +7,13 @@
 package cart;
 
 import entity.Product;
+import java.io.Serializable;
 
 /**
  *
  * @david renton
  */
-public class ShoppingCartItem {
+public class ShoppingCartItem implements Serializable{
 
     Product product;
     short quantity;

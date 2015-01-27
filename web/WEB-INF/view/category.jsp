@@ -63,7 +63,7 @@
                                 <form action="addToCart" method="post">
                                     <input type="hidden"
                                            name="productId"
-                                           value="${product}">
+                                           value="${product.productid}">
                                     <input type="submit"
                                            value="add to cart">
                                 </form>

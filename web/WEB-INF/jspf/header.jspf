@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/affablebean.css">
-        <title>The Affable Bean</title>
+        <title>The UniStore</title>
     </head>
     <body>
         <div id="main">
@@ -28,8 +28,8 @@
                 </div>
 
                 <a href="index.htm#">
-                    <img src="img/nuig logo.jpg" id="logo" alt="Affable Bean logo">
+                    <img src="img/nuig logo.jpg" id="logo" alt="UniStore logo">
                 </a>
 
-                <img src="img/logoText.png" id="logoText" alt="the affable bean">
+                <img src="img/logoText.png" id="logoText" alt="UniStore bean">
             </div>
