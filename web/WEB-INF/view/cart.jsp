@@ -7,7 +7,7 @@
 
             <div id="centerColumn">
 
-                <p>Your shopping cart contains ${cart.} items.</p>
+                <p>Your shopping cart contains ${cart.numberOfItems} items.</p>
 
                 <div id="actionBar">
                     <a href="#" class="bubble hMargin">clear cart</a>
