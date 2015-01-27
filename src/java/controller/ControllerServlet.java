@@ -5,49 +5,66 @@
  */
 package controller;
 
+import java.io.IOException;
+import cart.ShoppingCart;
 import entity.Category;
+import entity.OrderManager;
 import entity.Product;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import session.CategoryFacade;
+import session.ProductFacade;
 
 /**
  *
  * @author david
  */
-@WebServlet(name = "Controller", loadOnStartup = 1, urlPatterns = {"/category", "/addToCart", "/viewCart", "/updateCart", "/checkout", "/purchase", "/chooseLanguage"})
+@WebServlet(name = "Controller", loadOnStartup = 1, urlPatterns = {"/category",
+                                                                    "/addToCart",
+                                                                    "/viewCart",
+                                                                    "/updateCart",
+                                                                    "/checkout",
+                                                                    "/purchase",
+                                                                    "/chooseLanguage"})
+
 public class ControllerServlet extends HttpServlet {
-    
     @EJB
     private CategoryFacade categoryFacade;
     
+    @EJB
+    private OrderManager orderManager;
+    @EJB
+    private ProductFacade productFacade;
     @Override
     public void init() throws ServletException {
 
         // store category list in servlet context
         getServletContext().setAttribute("categories", categoryFacade.findAll());
     }
-
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         String userPath = request.getServletPath();
-        Category selectedCategory;
-        Collection<Product> categoryProducts;
+        HttpSession session = request.getSession();
+        ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
         // if category page is requested
 
@@ -58,34 +75,77 @@ public class ControllerServlet extends HttpServlet {
             if (categoryId != null) {
 
                 // get selected category
-                selectedCategory = categoryFacade.find(Integer.parseInt(categoryId));
+                Category selectedCategory = categoryFacade.find(Integer.parseInt(categoryId));
 
                 // place selected category in request scope
-                request.setAttribute("selectedCategory", selectedCategory);
+                session.setAttribute("selectedCategory", selectedCategory);
 
                 // get all products for selected category
-                categoryProducts = selectedCategory.getProductCollection();
+                Collection<Product> categoryProducts = selectedCategory.getProductCollection();
 
                 // place category products in request scope
-                request.setAttribute("categoryProducts", categoryProducts);
+                session.setAttribute("categoryProducts", categoryProducts);
+
             }
 
         // if cart page is requested
         } else if (userPath.equals("/viewCart")) {
-            // TODO: Implement cart page request
+            if (cart == null) {
 
+                cart = new ShoppingCart();
+                session.setAttribute("cart", cart);
+            }
+            cart.calculateTotal("0.0");
             userPath = "/cart";
-
-        // if checkout page is requested
-        } else if (userPath.equals("/checkout")) {
-            // TODO: Implement checkout page request
-
-        // if user switches language
-        } else if (userPath.equals("/chooseLanguage")) {
-            // TODO: Implement language request
-
         }
+        // if checkout page is requested
+//         else if (userPath.equals("/checkout")) {
+//            // TODO: Implement checkout page request
+//
+//        // if user switches language
+//        } else if (userPath.equals("/chooseLanguage")) {
+//            // TODO: Implement language request
+//
+//        }
+        // if addToCart action is called
+        else if (userPath.equals("/addToCart")) 
+           {
+            // if user is adding item to cart for first time
+            // create cart object and attach it to user session
+            if (cart == null) {
 
+                cart = new ShoppingCart();
+                session.setAttribute("cart", cart);
+            }
+            
+            int productId = Integer.parseInt(request.getParameter("productId"));
+
+            if (productId != 0) {
+
+                Product product = productFacade.find(productId);
+                cart.addItem(product);
+                System.out.println("product added:" + product.getName());
+            }
+            List products = productFacade.findAll();
+            request.setAttribute("productList",products);
+            userPath = "/products";
+           }// if updateCart action is called
+//        } else if (userPath.equals("/updateCart")) {
+//            // TODO: Implement update cart action
+//
+//        // if purchase action is called
+//        } else if (userPath.equals("/purchase")) {
+//            // TODO: Implement purchase action
+//
+//            userPath = "/confirmation";
+//        }
+        else
+        {
+            List products = productFacade.findAll();
+            request.setAttribute("productList",products);
+            userPath = "/products";
+   
+        }
         // use RequestDispatcher to forward request internally
         String url = "/WEB-INF/view" + userPath + ".jsp";
 
@@ -94,8 +154,37 @@ public class ControllerServlet extends HttpServlet {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+    
 
+    
+     
+//        String userPath = request.getServletPath();
+
+        
+        
+
+//        // use RequestDispatcher to forward request internally
+//        String url = "/WEB-INF/view" + userPath + ".jsp";
+//
+//        try {
+//            request.getRequestDispatcher(url).forward(request, response);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+    }   
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        processRequest(request, response);
+    }
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
@@ -105,32 +194,15 @@ public class ControllerServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-
-        String userPath = request.getServletPath();
-
-        // if addToCart action is called
-        if (userPath.equals("/addToCart")) {
-            // TODO: Implement add product to cart action
-
-        // if updateCart action is called
-        } else if (userPath.equals("/updateCart")) {
-            // TODO: Implement update cart action
-
-        // if purchase action is called
-        } else if (userPath.equals("/purchase")) {
-            // TODO: Implement purchase action
-
-            userPath = "/confirmation";
-        }
-
-        // use RequestDispatcher to forward request internally
-        String url = "/WEB-INF/view" + userPath + ".jsp";
-
-        try {
-            request.getRequestDispatcher(url).forward(request, response);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+    throws ServletException, IOException {  processRequest(request, response);
     }
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 }

@@ -6,7 +6,7 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -61,7 +61,7 @@ public class Userorder implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "Amount")
-    private BigDecimal amount;
+    private Double amount;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userorder")
     private Collection<OrderedProduct> orderedProductCollection;
     @JoinColumn(name = "User_User_id", referencedColumnName = "User_id")
@@ -75,7 +75,7 @@ public class Userorder implements Serializable {
         this.orderid = orderid;
     }
 
-    public Userorder(Integer orderid, Date date, String reciept, BigDecimal amount) {
+    public Userorder(Integer orderid, Date date, String reciept, Double amount) {
         this.orderid = orderid;
         this.date = date;
         this.reciept = reciept;
@@ -106,11 +106,11 @@ public class Userorder implements Serializable {
         this.reciept = reciept;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
