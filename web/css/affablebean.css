@@ -29,7 +29,22 @@ table {
     text-align: center;
     border: solid 1px #f5eabe;
 }
+a {
+    color: inherit;
+    text-decoration: underline;
+}
 
+a:hover { text-decoration: none }
+
+a:visited { color: inherit }
+
+img { border: none }
+
+input, select { margin: 5px }
+
+li { margin: 10px 0 }
+
+label { line-height: 30px }
 
 /* general styles */
 #main { background: #eee }
@@ -53,6 +68,8 @@ table {
 .hMargin { margin: 0 30px }
 
 .smallText { font-size: small }
+
+.reallySmallText { font-size: xx-small }
 
 .header {
     background-color: #c3e3e0;
@@ -91,6 +108,20 @@ table {
     float: right;
     background: #ccc;
 }
+#cart {
+    position: absolute;
+    margin: 5px 0 0 2px;
+}
+
+.horizontalMargin {
+    margin-left: 28px;
+    margin-right: 5px
+}
+
+#viewCart {
+    text-align: left;
+    width: 210px;
+}
 
 .headerWidget {
     width: 194px;
@@ -110,6 +141,12 @@ table {
     background: #aaa;
 }
 
+#footerText { margin-top: 5px }
+
+#footerDivider {
+    margin: 0 25px;
+    width: 300px;
+}
 
 /* index page styles */
 #indexLeftColumn {
@@ -126,6 +163,11 @@ table {
     background: #eee;
 }
 
+#welcomeText {
+    margin: 30px 5px 0 30px;
+    line-height: 1.4em;
+}
+
 .categoryBox {
     height: 176px;
     width: 212px;
@@ -134,9 +176,25 @@ table {
     background: #ccc;
 }
 
+.categoryLabel {
+    position: absolute;
+    background-color: #fff;
+    opacity: 0.7;
+    height: 40px;
+    width: 210px;
+    margin: 2px;
+}
+
 .categoryLabelText {
+    position: absolute;
     line-height: 150%;
     font-size: x-large;
+    margin: 3px 10px;
+}
+
+.categoryImage {
+    padding: 1px;
+    border:solid 1px #555;
 }
 
 
@@ -206,24 +264,39 @@ table {
 
 /* checkout page styles */
 #checkoutTable {
-    width: 360px;
+    width: 405px;
+    padding: 10px;
     background-color: #f5eabe;
     float: left;
-    height: 280px;
 }
 
-#infoBox {
-    width: 300px;
-    padding-left: 30px;
-    float: left;
+#checkoutTable td {
+    vertical-align: top;
+    text-align: right;
+    margin: 5px;
 }
+
+.inputField { width: 190px }
+
+#infoBox { padding: 10px 25px 0 460px }
 
 #priceBox {
     padding: 10px;
-    margin: 10px 0;
-    height: 128px;
+    border: 1px solid #c3e3e0;
     background-color: #c3e3e0;
 }
+
+#priceBox td {
+    text-align: right;
+    padding: 5px;
+}
+
+.checkoutPriceColumn {
+    width: 80px;
+    font-weight: bold;
+}
+
+.total { border-top: 1px solid #444 }
 
 
 /* confirmation page styles */

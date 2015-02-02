@@ -21,7 +21,7 @@
                 <c:forEach var="category" items="${categories}">
 
                     <c:choose>
-                        <c:when test="${category.id == pageContext.request.queryString}">
+                        <c:when test="${category.name == selectedCategory.name}">
                             <div class="categoryButton" id="selectedCategory">
                                 <span class="categoryText">
                                     ${category.name}
