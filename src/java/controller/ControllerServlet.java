@@ -107,7 +107,7 @@ public class ControllerServlet extends HttpServlet {
             }
 
             userPath = "/cart";
-
+System.out.println("user path = "+ userPath);
 
         // if checkout page is requested
         } else if (userPath.equals("/checkout")) {

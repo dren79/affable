@@ -1,3 +1,9 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+
+
+
+<div> hello </div>
 <div id="singleColumn">
 
     <c:choose>
@@ -81,7 +87,7 @@
                 <form action="<c:url value='updateCart'/>" method="post">
                     <input type="hidden"
                            name="productId"
-                           value="${product.id}">
+                           value="${product.productid}">
                     <input type="text"
                            maxlength="2"
                            size="2"
