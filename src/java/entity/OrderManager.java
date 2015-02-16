@@ -34,6 +34,10 @@ public class OrderManager
     @EJB
     private OrderedProductFacade orderedproductFacade;
     @EJB
+    private AddressFacade addressFacade;
+    @EJB
+    private CreditcardFacade creditcardFacade;
+    @EJB
     private UserFacade userFacade;
     @EJB
     private UserorderFacade userorderFacade;
@@ -45,10 +49,35 @@ public class OrderManager
 
 
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public int placeOrder(String fname, String lname, String email, String password, ShoppingCart cart) 
+    public int placeOrder(String fname, 
+                            String lname, 
+                            String pass, 
+                            String email,
+                            String addresstype, 
+                            String address1, 
+                            String address2, 
+                            String towncity, 
+                            String county,
+                            String ccNumber,
+                            String ccExp,
+                            String ccCvv,
+                            String ccName, 
+                            ShoppingCart cart) 
     {
 
-            User customer = addCustomer(fname, lname, email, password);
+            //Address addr = addAddress(addresstype, address1, address2, towncity, county); //here
+            
+        Address addr = new Address();
+        addr.setAddresstype(addresstype);
+        addr.setLine1(address1);
+        addr.setLine2(address2);
+        addr.setTowncity(towncity);
+        addr.setCounty(county);
+        addressFacade.create(addr);
+        em.flush();
+        Creditcard cc = addCreditcard(ccNumber, ccExp, ccCvv,ccName);
+            User customer = addCustomer(fname, lname, pass ,email, addr, cc);
+            
             Userorder order = addOrder(customer, cart);
 
             int id = order.getOrderid();
@@ -57,18 +86,42 @@ public class OrderManager
        
     }
 
-    private User addCustomer(String fname, String lname, String email, String password) 
-    {
+    private User addCustomer(String fname,String lname, String pass, String email, Address add, Creditcard cc) {
 
         User customer = new User();
         customer.setFname(fname);
         customer.setLname(lname);
+        customer.setPassword(pass);
         customer.setEmail(email);
-        customer.setPassword(password);
-        //customer.setAddress(address);
+        customer.setAddressAddressid(add);
+        customer.setCreditCardccid(cc);
         userFacade.create(customer);
         em.flush();
         return customer;
+    }
+    
+    private Address addAddress(String addresstype, String line1, String line2, String towncity, String county){
+        Address addr = new Address();
+        addr.setAddresstype(addresstype);
+        addr.setLine1(line1);
+        addr.setLine2(line2);
+        addr.setTowncity(towncity);
+        addr.setCounty(county);
+        addressFacade.create(addr); //here
+        em.flush();        
+        return addr;
+    }
+    
+    private Creditcard addCreditcard(String ccNumber,String ccExp,String ccCvv,String ccName){
+        Creditcard cc = new Creditcard();
+        
+        cc.setCcNumber(ccNumber);
+        cc.setCcExp(ccExp);
+        cc.setCcCvv(ccCvv);
+        cc.setCcName(ccName);
+        creditcardFacade.create(cc);
+        em.flush();
+        return cc;
     }
 
     private Userorder addOrder(User customer, ShoppingCart cart) 
@@ -117,6 +170,8 @@ public class OrderManager
         return orderedproductCollection;
         
     }
+
+    
 
     
 }

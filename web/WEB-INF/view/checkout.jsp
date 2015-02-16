@@ -14,14 +14,36 @@
     <form action="<c:url value='purchase'/>" method="post">
         <table id="checkoutTable">
             <tr>
-                <td><label for="name">name:</label></td>
+                <td><label for="fname">first name:</label></td>
                 <td class="inputField">
                     <input type="text"
                            size="31"
                            maxlength="45"
-                           id="name"
-                           name="name"
-                           value="${param.name}">
+                           id="fname"
+                           name="fname"
+                           value="${param.fname}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="lname">last name:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="45"
+                           id="lname"
+                           name="lname"
+                           value="${param.lname}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="name">password:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="45"
+                           id="pass"
+                           name="pass"
+                           value="${param.pass}">
                 </td>
             </tr>
             <tr>
@@ -36,45 +58,102 @@
                 </td>
             </tr>
             <tr>
-                <td><label for="phone">phone:</label></td>
+                <td><label for="addresstype">address type:</label></td>
                 <td class="inputField">
                     <input type="text"
                            size="31"
                            maxlength="16"
-                           id="phone"
-                           name="phone"
-                           value="${param.phone}">
+                           id="addresstype"
+                           name="addresstype"
+                           value="${param.addresstype}">
                 </td>
             </tr>
             <tr>
-                <td><label for="address">address:</label></td>
+                <td><label for="address1">address line 1:</label></td>
                 <td class="inputField">
                     <input type="text"
                            size="31"
                            maxlength="45"
-                           id="address"
-                           name="address"
-                           value="${param.address}">
-
-                    <br>
-                    prague
-                    <select name="cityRegion">
-                      <c:forEach begin="1" end="10" var="regionNumber">
-                        <option value="${regionNumber}"
-                                <c:if test="${param.cityRegion eq regionNumber}">selected</c:if>>${regionNumber}</option>
-                      </c:forEach>
-                    </select>
+                           id="address1"
+                           name="address1"
+                           value="${param.address1}">
                 </td>
             </tr>
             <tr>
-                <td><label for="creditcard">credit card number:</label></td>
+                <td><label for="address2">address line 1:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="45"
+                           id="address2"
+                           name="address2"
+                           value="${param.address2}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="towncity">town or city:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="45"
+                           id="towncity"
+                           name="towncity"
+                           value="${param.towncity}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="county">county:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="45"
+                           id="county"
+                           name="county"
+                           value="${param.county}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="creditcardNo">credit card number:</label></td>
                 <td class="inputField">
                     <input type="text"
                            size="31"
                            maxlength="19"
-                           id="creditcard"
-                           name="creditcard"
-                           value="${param.creditcard}">
+                           id="creditcardNo"
+                           name="creditcardNo"
+                           value="${param.creditcardNo}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ccExp">credit card expiry:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="19"
+                           id="ccExp"
+                           name="ccExp"
+                           value="${param.ccExp}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ccCvv">credit card cvv:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="19"
+                           id="ccCvv"
+                           name="ccCvv"
+                           value="${param.ccCvv}">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ccName">credit card name:</label></td>
+                <td class="inputField">
+                    <input type="text"
+                           size="31"
+                           maxlength="19"
+                           id="ccName"
+                           name="ccName"
+                           value="${param.ccName}">
                 </td>
             </tr>
             <tr>

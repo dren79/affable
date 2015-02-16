@@ -5,14 +5,12 @@
  */
 package controller;
 
-import java.io.IOException;
 import cart.ShoppingCart;
 import entity.Category;
 import entity.OrderManager;
 import entity.Product;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +45,8 @@ public class ControllerServlet extends HttpServlet {
     private OrderManager orderManager;
     @EJB
     private ProductFacade productFacade;
+    
+    
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         
@@ -107,7 +107,7 @@ public class ControllerServlet extends HttpServlet {
             }
 
             userPath = "/cart";
-System.out.println("user path = "+ userPath);
+
 
         // if checkout page is requested
         } else if (userPath.equals("/checkout")) {
@@ -191,7 +191,40 @@ System.out.println("user path = "+ userPath);
         // if purchase action is called
         } else if (userPath.equals("/purchase")) {
             // TODO: Implement purchase action
-
+            
+            if (cart != null) {  //TODO: all these need to be changed to our ones
+                // extract user data from request
+                String fname = request.getParameter("fname");
+                String lname = request.getParameter("lname");
+                String pass = request.getParameter("pass");
+                String email = request.getParameter("email");
+                String addresstype = request.getParameter("addresstype");
+                String address1 = request.getParameter("address1");
+                String address2 = request.getParameter("address2");
+                String towncity = request.getParameter("towncity");
+                String county = request.getParameter("county");
+                String ccNumber = request.getParameter("creditcardNo");
+                String ccExp = request.getParameter("ccExp");
+                String ccCvv = request.getParameter("ccCvv");
+                String ccName = request.getParameter("ccName");
+                
+                int orderId = orderManager.placeOrder(fname,
+                                                        lname,
+                                                        pass, 
+                                                        email,
+                                                        addresstype, 
+                                                        address1, 
+                                                        address2, 
+                                                        towncity,
+                                                        county,
+                                                        ccNumber, 
+                                                        ccExp, 
+                                                        ccCvv,
+                                                        ccName, 
+                                                        cart);
+                
+            }
+            
             userPath = "/confirmation";
         }
 

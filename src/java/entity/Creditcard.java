@@ -41,11 +41,11 @@ public class Creditcard implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "cc_id")
-    private Integer ccId;
+    private String ccId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cc_number")
-    private int ccNumber;
+    private String ccNumber;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -54,7 +54,7 @@ public class Creditcard implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "cc_cvv")
-    private int ccCvv;
+    private String ccCvv;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -66,11 +66,11 @@ public class Creditcard implements Serializable {
     public Creditcard() {
     }
 
-    public Creditcard(Integer ccId) {
+    public Creditcard(String ccId) {
         this.ccId = ccId;
     }
 
-    public Creditcard(Integer ccId, int ccNumber, String ccExp, int ccCvv, String ccName) {
+    public Creditcard(String ccId, String ccNumber, String ccExp, String ccCvv, String ccName) {
         this.ccId = ccId;
         this.ccNumber = ccNumber;
         this.ccExp = ccExp;
@@ -78,19 +78,19 @@ public class Creditcard implements Serializable {
         this.ccName = ccName;
     }
 
-    public Integer getCcId() {
+    public String getCcId() {
         return ccId;
     }
 
-    public void setCcId(Integer ccId) {
+    public void setCcId(String ccId) {
         this.ccId = ccId;
     }
 
-    public int getCcNumber() {
+    public String getCcNumber() {
         return ccNumber;
     }
 
-    public void setCcNumber(int ccNumber) {
+    public void setCcNumber(String ccNumber) {
         this.ccNumber = ccNumber;
     }
 
@@ -102,11 +102,11 @@ public class Creditcard implements Serializable {
         this.ccExp = ccExp;
     }
 
-    public int getCcCvv() {
+    public String getCcCvv() {
         return ccCvv;
     }
 
-    public void setCcCvv(int ccCvv) {
+    public void setCcCvv(String ccCvv) {
         this.ccCvv = ccCvv;
     }
 
