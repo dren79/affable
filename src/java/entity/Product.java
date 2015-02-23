@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -42,8 +44,8 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Product_id")
     private Integer productid;
     @Basic(optional = false)
@@ -70,11 +72,11 @@ public class Product implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "Product_type")
     private String producttype;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private Collection<Orderedproduct> orderedproductCollection;
     @JoinColumn(name = "Category_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Category categoryid;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private Collection<OrderedProduct> orderedProductCollection;
 
     public Product() {
     }
@@ -147,21 +149,21 @@ public class Product implements Serializable {
         this.producttype = producttype;
     }
 
+    @XmlTransient
+    public Collection<Orderedproduct> getOrderedproductCollection() {
+        return orderedproductCollection;
+    }
+
+    public void setOrderedproductCollection(Collection<Orderedproduct> orderedproductCollection) {
+        this.orderedproductCollection = orderedproductCollection;
+    }
+
     public Category getCategoryid() {
         return categoryid;
     }
 
     public void setCategoryid(Category categoryid) {
         this.categoryid = categoryid;
-    }
-
-    @XmlTransient
-    public Collection<OrderedProduct> getOrderedProductCollection() {
-        return orderedProductCollection;
-    }
-
-    public void setOrderedProductCollection(Collection<OrderedProduct> orderedProductCollection) {
-        this.orderedProductCollection = orderedProductCollection;
     }
 
     @Override

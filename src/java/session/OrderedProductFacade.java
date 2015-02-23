@@ -5,7 +5,8 @@
  */
 package session;
 
-import entity.OrderedProduct;
+import entity.Orderedproduct;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author david
  */
 @Stateless
-public class OrderedProductFacade extends AbstractFacade<OrderedProduct> {
+public class OrderedProductFacade extends AbstractFacade<Orderedproduct> {
     @PersistenceContext(unitName = "AffableBeanPU")
     private EntityManager em;
 
@@ -25,7 +26,10 @@ public class OrderedProductFacade extends AbstractFacade<OrderedProduct> {
     }
 
     public OrderedProductFacade() {
-        super(OrderedProduct.class);
+        super(Orderedproduct.class);
+    }
+    public List<Orderedproduct> findByUserOrderOrderid(Object id) {
+        return em.createNamedQuery("Orderedproduct.findByUserOrderOrderid").setParameter("userOrderOrderid", id).getResultList();
     }
     
 }

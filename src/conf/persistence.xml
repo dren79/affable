@@ -3,7 +3,6 @@
   <persistence-unit name="AffableBeanPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>jdbc/affablebean</jta-data-source>
-   
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

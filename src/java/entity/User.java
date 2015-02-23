@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author david
  */
 @Entity
-@Table(name = "user")
+@Table(name = "User")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
@@ -71,8 +71,8 @@ public class User implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "Password")
     private String password;
-    @Basic(optional = false)
-    @NotNull
+//    @Basic(optional = false)
+//    @NotNull
     @Column(name = "Creation_date")
     @Temporal(TemporalType.DATE)
     private Date creationdate;
@@ -81,9 +81,9 @@ public class User implements Serializable {
     private Address addressAddressid;
     @JoinColumn(name = "creditCard_cc_id", referencedColumnName = "cc_id")
     @ManyToOne(optional = false)
-    private Creditcard creditCardccid;
+    private CreditCard creditCardccid;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userUserid")
-    private Collection<Userorder> userorderCollection;
+    private Collection<UserOrder> userOrderCollection;
 
     public User() {
     }
@@ -157,21 +157,21 @@ public class User implements Serializable {
         this.addressAddressid = addressAddressid;
     }
 
-    public Creditcard getCreditCardccid() {
+    public CreditCard getCreditCardccid() {
         return creditCardccid;
     }
 
-    public void setCreditCardccid(Creditcard creditCardccid) {
+    public void setCreditCardccid(CreditCard creditCardccid) {
         this.creditCardccid = creditCardccid;
     }
 
     @XmlTransient
-    public Collection<Userorder> getUserorderCollection() {
-        return userorderCollection;
+    public Collection<UserOrder> getUserOrderCollection() {
+        return userOrderCollection;
     }
 
-    public void setUserorderCollection(Collection<Userorder> userorderCollection) {
-        this.userorderCollection = userorderCollection;
+    public void setUserOrderCollection(Collection<UserOrder> userOrderCollection) {
+        this.userOrderCollection = userOrderCollection;
     }
 
     @Override
