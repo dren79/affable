@@ -78,8 +78,8 @@ public class Address implements Serializable {
         this.addressid = addressid;
     }
 
-    public Address(Integer addressid, String addresstype, String line1, String line2, String towncity) {
-        this.addressid = addressid;
+    public Address(String addresstype, String line1, String line2, String towncity) {
+        
         this.addresstype = addresstype;
         this.line1 = line1;
         this.line2 = line2;

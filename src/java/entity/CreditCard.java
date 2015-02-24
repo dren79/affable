@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,22 +28,22 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author david
  */
 @Entity
-@Table(name = "creditcard")
+@Table(name = "creditCard")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Creditcard.findAll", query = "SELECT c FROM Creditcard c"),
-    @NamedQuery(name = "Creditcard.findByCcId", query = "SELECT c FROM Creditcard c WHERE c.ccId = :ccId"),
-    @NamedQuery(name = "Creditcard.findByCcNumber", query = "SELECT c FROM Creditcard c WHERE c.ccNumber = :ccNumber"),
-    @NamedQuery(name = "Creditcard.findByCcExp", query = "SELECT c FROM Creditcard c WHERE c.ccExp = :ccExp"),
-    @NamedQuery(name = "Creditcard.findByCcCvv", query = "SELECT c FROM Creditcard c WHERE c.ccCvv = :ccCvv"),
-    @NamedQuery(name = "Creditcard.findByCcName", query = "SELECT c FROM Creditcard c WHERE c.ccName = :ccName")})
-public class Creditcard implements Serializable {
+    @NamedQuery(name = "CreditCard.findAll", query = "SELECT c FROM CreditCard c"),
+    @NamedQuery(name = "CreditCard.findByCcId", query = "SELECT c FROM CreditCard c WHERE c.ccId = :ccId"),
+    @NamedQuery(name = "CreditCard.findByCcNumber", query = "SELECT c FROM CreditCard c WHERE c.ccNumber = :ccNumber"),
+    @NamedQuery(name = "CreditCard.findByCcExp", query = "SELECT c FROM CreditCard c WHERE c.ccExp = :ccExp"),
+    @NamedQuery(name = "CreditCard.findByCcCvv", query = "SELECT c FROM CreditCard c WHERE c.ccCvv = :ccCvv"),
+    @NamedQuery(name = "CreditCard.findByCcName", query = "SELECT c FROM CreditCard c WHERE c.ccName = :ccName")})
+public class CreditCard implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "cc_id")
-    private String ccId;
+    private Integer ccId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "cc_number")
@@ -63,26 +65,26 @@ public class Creditcard implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditCardccid")
     private Collection<User> userCollection;
 
-    public Creditcard() {
+    public CreditCard() {
     }
 
-    public Creditcard(String ccId) {
+    public CreditCard(Integer ccId) {
         this.ccId = ccId;
     }
 
-    public Creditcard(String ccId, String ccNumber, String ccExp, String ccCvv, String ccName) {
-        this.ccId = ccId;
+    public CreditCard( String ccNumber, String ccExp, String ccCvv, String ccName) {
+        
         this.ccNumber = ccNumber;
         this.ccExp = ccExp;
         this.ccCvv = ccCvv;
         this.ccName = ccName;
     }
 
-    public String getCcId() {
+    public Integer getCcId() {
         return ccId;
     }
 
-    public void setCcId(String ccId) {
+    public void setCcId(Integer ccId) {
         this.ccId = ccId;
     }
 
@@ -137,10 +139,10 @@ public class Creditcard implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Creditcard)) {
+        if (!(object instanceof CreditCard)) {
             return false;
         }
-        Creditcard other = (Creditcard) object;
+        CreditCard other = (CreditCard) object;
         if ((this.ccId == null && other.ccId != null) || (this.ccId != null && !this.ccId.equals(other.ccId))) {
             return false;
         }
@@ -149,7 +151,7 @@ public class Creditcard implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Creditcard[ ccId=" + ccId + " ]";
+        return "entity.CreditCard[ ccId=" + ccId + " ]";
     }
     
 }

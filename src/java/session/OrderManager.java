@@ -148,19 +148,12 @@ public class OrderManager
         Random random = new Random();
         int i = random.nextInt(999999999);
         order.setReciept(i);
-        
-//        
-//        
-//        
-//        Collection<Orderedproduct> orderedproduct = addOrderedItems(order, cart);
-//        
-//        order.setOrderedproductCollection(orderedproduct);
-//  
+
         userorderFacade.create(order);
         //em.persist(order);
         em.flush();
-        int t = order.getOrderid();
-        System.out.println("order id"+t);
+        //int t = order.getOrderid();
+        //System.out.println("order id"+t);
         return order;
     }
 

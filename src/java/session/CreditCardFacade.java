@@ -5,7 +5,7 @@
  */
 package session;
 
-import entity.Creditcard;
+import entity.CreditCard;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author david
  */
 @Stateless
-public class CreditcardFacade extends AbstractFacade<Creditcard> {
+public class CreditCardFacade extends AbstractFacade<CreditCard> {
     @PersistenceContext(unitName = "AffableBeanPU")
     private EntityManager em;
 
@@ -24,8 +24,8 @@ public class CreditcardFacade extends AbstractFacade<Creditcard> {
         return em;
     }
 
-    public CreditcardFacade() {
-        super(Creditcard.class);
+    public CreditCardFacade() {
+        super(CreditCard.class);
     }
     
 }
