@@ -5,12 +5,54 @@
 --%>
 
 
-<div id="singleColumn">
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <br>
+        <span class="label label-success label-as-badge" id="checkout_badge">checkout</span>
+    </div>
+    
+    <div class="col-md-6 col-xs-12">
+            <br>
+        <ul>
+            
+            <li>Next-day delivery is guaranteed</li>
+            <li>A &euro; ${initParam.deliverySurcharge}
+                delivery surcharge is applied to all purchase orders</li>
+        </ul>
 
-    <h2>checkout</h2>
-
-    <p>In order to purchase the items in your shopping cart, please provide us with the following information:</p>
-
+        <table class="table table-striped table-bordered" cellspacing="0" width="80%">
+          <thead>
+            <tr>      
+                <th>description</th>
+                <th><span class="glyphicon glyphicon-euro"></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>subtotal:</td>
+                <td class="checkoutPriceColumn">
+                    &euro; ${cart.subtotal}</td>
+            </tr>
+            <tr>
+                <td>delivery surcharge:</td>
+                <td class="checkoutPriceColumn">
+                    &euro; ${initParam.deliverySurcharge}</td>
+            </tr>
+            <tr>
+                <td class="total">total:</td>
+                <td class="total checkoutPriceColumn">
+                    &euro; ${cart.total}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+            
+    <div class="col-md-6 col-xs-12">
+        <p>To order, please provide us with the following information:</p>
+    </div>
+            
+    <div class="col-md-12">
+        
     <form action="<c:url value='purchase'/>" method="post">
         <table id="checkoutTable">
             <tr>
@@ -163,31 +205,5 @@
             </tr>
         </table>
     </form>
-
-    <div id="infoBox">
-
-        <ul>
-            <li>Next-day delivery is guaranteed</li>
-            <li>A &euro; ${initParam.deliverySurcharge}
-                delivery surcharge is applied to all purchase orders</li>
-        </ul>
-
-        <table id="priceBox">
-            <tr>
-                <td>subtotal:</td>
-                <td class="checkoutPriceColumn">
-                    &euro; ${cart.subtotal}</td>
-            </tr>
-            <tr>
-                <td>delivery surcharge:</td>
-                <td class="checkoutPriceColumn">
-                    &euro; ${initParam.deliverySurcharge}</td>
-            </tr>
-            <tr>
-                <td class="total">total:</td>
-                <td class="total checkoutPriceColumn">
-                    &euro; ${cart.total}</td>
-            </tr>
-        </table>
     </div>
 </div>

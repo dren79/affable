@@ -1,12 +1,24 @@
-<<div id="footer">
-                <br>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="JS/bootstrap.min.js"></script>
+<script src="fonts/glyphicons-halflings-regular.woff2"></script>
+        <div id="footer">
+            <br>
                 <hr id="footerDivider">
-                <p id="footerText" class="reallySmallText">
-                    <a href="<c:url value='#'/>">Privacy Policy</a>
-                    &nbsp;&nbsp;::&nbsp;&nbsp;
-                    <a href="<c:url value='#'/>">Contact</a>
-                    &nbsp;&nbsp;&copy;&nbsp;&nbsp;
-                    2015 The UniStore</p>
+                    <p id="footerText" class="reallySmallText">
+                        <a href="
+                            <c:url value='#'/>">Privacy Policy
+                        </a>
+                            &nbsp;&nbsp;::&nbsp;&nbsp;
+
+                        <a href="
+                            <c:url value='#'/>">Contact
+                        </a>
+                            &nbsp;&nbsp;&copy;&nbsp;&nbsp;
+                            2015 The UniStore
+                    </p>
+                </div>
             </div>
         </div>
     </body>

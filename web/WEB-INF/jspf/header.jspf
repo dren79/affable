@@ -13,106 +13,125 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
+<html lang="en">
     <head>
+        <meta name="google-translate-customization" content="428370bcf49794c0-46dd7b75b6cb22b1-gbcb0e899d871d664-12">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/affablebean.css">
         <link rel="shortcut icon" href="img/favicon.ico">
+        
 
         <title>The UniStore</title>
     </head>
     <body>
-        <div id="main">
-            <div id="header">
-                <div id="widgetBar">
+        <div class="container">
+            <div id="main">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-md-offset-4 col-lg-offset-4" id="topbar">
+                        <div class="btn-group btn-group-lg" id="header_buttons">
+                        <div class="btn btn-primary" id="google_translate_element">
+                                <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                                }
+                                </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        </div>
 
-                    <div class="headerWidget">
-                        [ language toggle ]
+                        <%-- checkout widget --%>
+<!--                        <div class="col-xs-12 col-md-4">-->
+                            
+                           <%-- tests for the following:
+                                * if cart exists and is not empty
+                                * if the servlet path does not contain '/checkout'
+                                * if the requested view is not checkout
+                                * if the servlet path does not contain '/cart'
+                                * if the requested view is not cart
+
+                                <c:if test="${!empty sessionScope.cart}">
+                                    CART EXISTS AND IS NOT NULL
+                                </c:if>
+                                    <BR>
+                                <c:if test="${sessionScope.cart.numberOfItems != 0}">
+                                    NUMBER OF ITEMS IN CART IS NOT 0
+                                </c:if>
+                                    <BR>
+                                <c:if test="${fn:contains(pageContext.request.servletPath,'/checkout')}">
+                                    SERVLET PATH CONTAINS '/checkout'
+                                </c:if>
+                                    <BR>
+                                <c:if test="${requestScope['javax.servlet.forward.servlet_path'] ne '/checkout'}">
+                                    REQUEST IS NOT CHECKOUT
+                                </c:if> --%>
+
+                            <c:if test="${!empty cart && cart.numberOfItems != 0 && 
+
+                                          !fn:contains(pageContext.request.servletPath,'/checkout') &&
+                                          requestScope['javax.servlet.forward.servlet_path'] ne '/checkout' &&
+
+                                          !fn:contains(pageContext.request.servletPath,'/cart') &&
+                                          requestScope['javax.servlet.forward.servlet_path'] ne '/cart'}">
+<!--                                            this bit is a test to see if we should be able to go to the check out-->
+                                    <a href="<c:url value='checkout'/>" class="btn btn-primary">
+                                        go pay! <span class="glyphicon glyphicon-arrow-right"></span>
+                                    </a>
+                            </c:if>
+                            
+<!--                        </div>-->
+
+                    <%-- shopping cart widget --%>
+<!--                        <div class="col-xs-12 col-md-4" id="viewCart">-->
+                            
+                        <a href="<c:url value='viewCart'/>" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                                  <%-- If 'numberOfItems' property doesn't exist, or if number of items
+                                       in cart is 0, output '0', otherwise output 'numberOfItems' --%>
+
+                                    <c:choose>
+                                        <c:when test="${cart.numberOfItems == null}">
+                                            <span class="badge"> 0 </span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="badge"> ${cart.numberOfItems} </span>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                              <%-- Handle singular/plural forms of 'item' --%>
+                                    <c:choose>
+                                        <c:when test="${cart.numberOfItems == 1}">
+                                            item
+                                        </c:when>
+                                        <c:otherwise>
+                                            items
+                                        </c:otherwise>
+                                    </c:choose>
+
+
+                                <c:if test="${!empty cart && cart.numberOfItems != 0 &&
+
+                                    !fn:contains(pageContext.request.servletPath,'/cart') &&
+                                    requestScope['javax.servlet.forward.servlet_path'] ne '/cart'}"> 
+<!--                                    this is a test to see if there is something in the cart-->
+
+                                  
+                                </c:if>
+                            </a>
+<!--                        </div>-->
                     </div>
-
-                <%-- checkout widget --%>
-                    <div class="headerWidget">
-
-                       <%-- tests for the following:
-                            * if cart exists and is not empty
-                            * if the servlet path does not contain '/checkout'
-                            * if the requested view is not checkout
-                            * if the servlet path does not contain '/cart'
-                            * if the requested view is not cart
-
-                            <c:if test="${!empty sessionScope.cart}">
-                                CART EXISTS AND IS NOT NULL
-                            </c:if>
-                                <BR>
-                            <c:if test="${sessionScope.cart.numberOfItems != 0}">
-                                NUMBER OF ITEMS IN CART IS NOT 0
-                            </c:if>
-                                <BR>
-                            <c:if test="${fn:contains(pageContext.request.servletPath,'/checkout')}">
-                                SERVLET PATH CONTAINS '/checkout'
-                            </c:if>
-                                <BR>
-                            <c:if test="${requestScope['javax.servlet.forward.servlet_path'] ne '/checkout'}">
-                                REQUEST IS NOT CHECKOUT
-                            </c:if> --%>
-
-                        <c:if test="${!empty cart && cart.numberOfItems != 0 &&
-
-                                      !fn:contains(pageContext.request.servletPath,'/checkout') &&
-                                      requestScope['javax.servlet.forward.servlet_path'] ne '/checkout' &&
-
-                                      !fn:contains(pageContext.request.servletPath,'/cart') &&
-                                      requestScope['javax.servlet.forward.servlet_path'] ne '/cart'}">
-
-                      <a href="<c:url value='checkout'/>" class="bubble">
-                        proceed to checkout &#x279f;
-                      </a>
-                    </c:if>
                     </div>
-
-                <%-- shopping cart widget --%>
-                  <div class="headerWidget" id="viewCart">
-
-                    <img src="img/cart.gif" alt="shopping cart icon" id="cart">
-
-                  <%-- If 'numberOfItems' property doesn't exist, or if number of items
-                       in cart is 0, output '0', otherwise output 'numberOfItems' --%>
-                    <span class="horizontalMargin">
-                      <c:choose>
-                        <c:when test="${cart.numberOfItems == null}">
-                          0
-                        </c:when>
-                        <c:otherwise>
-                          ${cart.numberOfItems}
-                        </c:otherwise>
-                      </c:choose>
-
-                  <%-- Handle singular/plural forms of 'item' --%>
-                      <c:choose>
-                        <c:when test="${cart.numberOfItems == 1}">
-                          item
-                        </c:when>
-                        <c:otherwise>
-                          items
-                        </c:otherwise>
-                      </c:choose>
-                    </span>
-
-                    <c:if test="${!empty cart && cart.numberOfItems != 0 &&
-
-                                  !fn:contains(pageContext.request.servletPath,'/cart') &&
-                                  requestScope['javax.servlet.forward.servlet_path'] ne '/cart'}">
-
-                      <a href="<c:url value='viewCart'/>" class="bubble">
-                          view cart
-                      </a>
-                    </c:if>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-xs-2 col-sm-3 col-md-4 col-lg-5 " id="logo">
+                                        <a href="<c:url value='/'/>">
+                                            <img src="img/nuig logo.jpg" class="img-responsive-5 img-responsive-6" >
+                                        </a>
+                                </div>
+                                <div class="col-xs-10 col-sm-9 col-md-8 col-lg-7"  id="logoText">
+                                    <img src="img/logoText.png" alt="UniStore" class="img-responsive-7 img-responsive-8" >
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                </div>
-
-                <a href="<c:url value='/'/>">
-                    <img src="img/nuig logo.jpg" id="logo" alt="UniStore logo">
-                </a>
-
-                <img src="img/logoText.png" id="logoText" alt="UniStore bean">
-            </div>
