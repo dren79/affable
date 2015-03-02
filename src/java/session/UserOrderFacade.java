@@ -6,6 +6,7 @@
 package session;
 
 import entity.UserOrder;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,16 @@ public class UserOrderFacade extends AbstractFacade<UserOrder> {
 
     public UserOrderFacade() {
         super(UserOrder.class);
+    }
+    public UserOrder find(Object id) {
+        UserOrder order = em.find(UserOrder.class, id);
+        em.refresh(order);
+        return order;
+    }
+    
+    @RolesAllowed("UnistoreAdmin")
+    public UserOrder findByUser(Object User) {
+        return (UserOrder) em.createNamedQuery("UserOrder.findByUser").setParameter("User", User).getSingleResult();
     }
     
 }

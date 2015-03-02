@@ -10,4 +10,8 @@
     <property name="User" value="mydb1529hr"/>
     <property name="Password" value="xi7naw"/>
   </jdbc-connection-pool>
+  <security-role-mapping>
+      <role-name>UnistoreAdmin</role-name>
+      <group-name>UnistoreAdmin</group-name>
+  </security-role-mapping>
 </resources>

@@ -53,8 +53,154 @@
             
     <div class="col-md-12">
         
-    <form action="<c:url value='purchase'/>" method="post">
-        <table id="checkoutTable">
+    <form class="form-horizontal" role="form" action="<c:url value='purchase'/>" method="post">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">first name:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="fname"
+                           name="fname"
+                           value="${param.fname}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">last name:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="lname"
+                           name="fname"
+                           value="${param.lname}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">password:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="pass"
+                           name="fname"
+                           value="${param.pass}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">email:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="email"
+                           name="fname"
+                           value="${param.email}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">address type:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="addresstype"
+                           name="fname"
+                           value="${param.addresstype}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">address line 1:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="address1"
+                           name="fname"
+                           value="${param.address1}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">address line 2:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="address2"
+                           name="fname"
+                           value="${param.address2}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">town or city:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="towncity"
+                           name="fname"
+                           value="${param.towncity}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">county:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="county"
+                           name="fname"
+                           value="${param.county}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">credit card number:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="creditcardNo"
+                           name="fname"
+                           value="${param.creditcardNo}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">credit card expiry:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="ccExp"
+                           name="fname"
+                           value="${param.ccExp}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">cvv:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="ccCvv"
+                           name="fname"
+                           value="${param.ccCvv}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">name on card:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="ccName"
+                           name="fname"
+                           value="${param.ccName}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="fname">address line 1:</label>
+            <div class="col-sm-10">
+                <input type="text"
+                           class="form-control"
+                           id="address1"
+                           name="fname"
+                           value="${param.address1}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-default" value="submit purchase">Submit</button>
+            </div>
+        </div>
+    </form>
+<!--        <table id="checkoutTable">
             <tr>
                 <td><label for="fname">first name:</label></td>
                 <td class="inputField">
@@ -204,6 +350,6 @@
                 </td>
             </tr>
         </table>
-    </form>
+    </form>-->
     </div>
 </div>
