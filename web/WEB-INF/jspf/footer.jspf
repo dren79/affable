@@ -3,6 +3,12 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="JS/bootstrap.min.js"></script>
 <script src="fonts/glyphicons-halflings-regular.woff2"></script>
+<script type="text/javascript">
+            $(document).ready(function(){
+                    $("#myModal").modal('show');
+            });
+        </script>
+        
         <div id="footer">
             <br>
                 <hr id="footerDivider">

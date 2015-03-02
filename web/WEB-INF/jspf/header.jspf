@@ -23,7 +23,11 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/affablebean.css">
         <link rel="shortcut icon" href="img/favicon.ico">
-        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                    $("#myModal").modal('show');
+            });
+        </script>
 
         <title>The UniStore</title>
     </head>

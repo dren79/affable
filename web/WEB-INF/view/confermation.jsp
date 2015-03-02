@@ -37,7 +37,7 @@
                 </div>
             </div>-->
 
-<div id="singleColumn">
+<div id="singleColum">
 
     <p id="confirmationText">
         <strong>Your order has been successfully processed and will be delivered within 3 days.</strong>
