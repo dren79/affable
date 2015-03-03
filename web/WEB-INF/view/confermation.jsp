@@ -37,9 +37,16 @@
                 </div>
             </div>-->
 
-<div id="singleColum">
 
-    <p id="confirmationText">
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Order Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>
         <strong>Your order has been successfully processed and will be delivered within 3 days.</strong>
         <br><br>
         Please keep a note of your receipt number:
@@ -49,82 +56,78 @@
         <br><br>
         Thank you for shopping at the UniStore!
     </p>
-
-    <div class="summaryColumn" >
-
-        <table id="orderSummaryTable" class="detailsTable">
-            <tr class="header">
-                <th colspan="3">order summary</th>
-            </tr>
-
-            <tr class="tableHeading">
-                <td>product</td>
-                <td>quantity</td>
-                <td>price</td>
-            </tr>
-
-            <c:forEach var="orderedProduct" items="${orderedProducts}" varStatus="iter">
-
-                <tr class="${((iter.index % 2) != 0) ? 'lightBlue' : 'white'}">
-                    <td>${products[iter.index].name}</td>
-                    <td class="quantityColumn">
-                        ${orderedProduct.quantity}
-                    </td>
-                    <td class="confirmationPriceColumn">
-                        &euro; ${products[iter.index].price * orderedProduct.quantity}
-                    </td>
-                </tr>
-
-            </c:forEach>
-
-            <tr class="lightBlue"><td colspan="3" style="padding: 0 20px"><hr></td></tr>
-
-            <tr class="lightBlue">
-                <td colspan="2" id="deliverySurchargeCellLeft"><strong>delivery surcharge:</strong></td>
-                <td id="deliverySurchargeCellRight">&euro; ${initParam.deliverySurcharge}</td>
-            </tr>
-
-            <tr class="lightBlue">
-                <td colspan="2" id="totalCellLeft"><strong>total:</strong></td>
-                <td id="totalCellRight">&euro; ${orderRecord.amount}</td>
-            </tr>
-
-            <tr class="lightBlue"><td colspan="3" style="padding: 0 20px"><hr></td></tr>
-
-<!--            <tr class="lightBlue">
-                <td colspan="3" id="dateProcessedRow"><strong>date processed:</strong>
-                    
-                </td>
-            </tr>-->
-        </table>
-
+                <p class="text-warning"><small>Close this window to print confirmation receipt</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="summaryColumn" >
+        <div class="container">
+        <div class="row">
+    <div class="col-md-6 col-xs-12 col-lg-offset-1" align="left">
+        <br>
+        <div><h2>Delivery Address Summary</h2>
+                    <br><strong>First Name:</strong>${customer.fname}
+                    <br><strong>Last Name:</strong>${customer.lname}
+                    <br><strong>Address Line 1:</strong>${address.line1}
+                    <br><strong>Address Line 2:</strong>${address.line2}
+                    <br><strong>Town/City:</strong>${address.towncity}
+                    <br><strong>Email:</strong> ${customer.email}</br></span></div>
+    </div>
+</div>
+        </div>
+        
 
-        <table id="deliveryAddressTable" class="detailsTable">
-            <tr class="header">
-                <th colspan="3">delivery address</th>
-            </tr>
-
+<div id="singleColum">
+    
+    <div class="col-md-12 col-lg-6">
+        <h2 class="sub-header">Order Summary</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+          <thead>
             <tr>
-                <td colspan="3" class="lightBlue">
-                    ${customer.fname}
-                    <br>
-                    ${customer.lname}
-                    <br>
-                    ${address.line1}
-                    <br>
-                    ${address.line2}
-                    <br>
-                    ${address.towncity}
-                    <br>
-                    <hr>
-                    <strong>email:</strong> ${customer.email}
-                </td>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
             </tr>
+          </thead>
+          <c:forEach var="orderedProduct" items="${orderedProducts}" varStatus="iter">
+          <tbody>
+            <tr>
+              <td><div class="text-left">${products[iter.index].name}</td>
+              <td><div class="text-left">${orderedProduct.quantity}</td>
+              <td><div class="text-left"> &euro; ${products[iter.index].price * orderedProduct.quantity}</td>
+            </tr>
+            </c:forEach>
+          </tbody>
+          <tbody>
+              <tr>
+                  <td><div class="text-left"><strong>Cost Summary</strong></td>
+              </tr>
+          </tbody>
+          <tbody>
+              <tr>
+                  <th>Delivery Surcharge</th>
+                  <th>Total</th>
+                  <th>Processed</th>
+              </tr>
+          </tbody>
+          <tbody>
+              <tr>
+                  <td><div class="text-left">&euro; ${initParam.deliverySurcharge}</td>
+                  <td><div class="text-left">&euro; ${orderRecord.amount}</td>
+                  <td><div class="text-left"><span class="glyphicon glyphicon-ok"></span>
+              </tr>
+          </tbody>
         </table>
-
+      </div>
     </div>
+    
+  
+          <div class="goomap"  id="map-canvas"></div>
+    
 </div>
 

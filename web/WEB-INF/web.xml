@@ -82,6 +82,7 @@
             <url-pattern>/WEB-INF/jsp/index.jsp</url-pattern>
             <url-pattern>/admin/login.jsp</url-pattern>
             <url-pattern>/admin/error.jsp</url-pattern>
+            <url-pattern>/admin/index.jsp</url-pattern>
             <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
@@ -93,18 +94,17 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>-->
-    <security-constraint>
-        <display-name>Admin</display-name>
-        <web-resource-collection>
-            <web-resource-name>Unistore Admin</web-resource-name>
-            <description/>
-            <url-pattern>/admin/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <description/>
-            <role-name>unistoreAdmin</role-name>
-        </auth-constraint>
-    </security-constraint>
+    
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/admin/login.jsp</form-login-page>
+            <form-error-page>/admin/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    
     <security-constraint>
         <display-name>checkout</display-name>
         <web-resource-collection>
@@ -118,16 +118,5 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>file</realm-name>
-        <form-login-config>
-            <form-login-page>/admin/login.jsp</form-login-page>
-            <form-error-page>/admin/error.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
-    <security-role>
-        <description/>
-        <role-name>UnistoreAdmin</role-name>
-    </security-role>
+    
 </web-app>

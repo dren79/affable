@@ -5,6 +5,7 @@
 --%>
 
 <form action="j_security_check" method=post>
+    <a href="login.jsp"></a>
     <div id="loginBox">
         <p><strong>username:</strong>
             <input type="text" size="20" name="j_username"></p>

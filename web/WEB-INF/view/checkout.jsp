@@ -1,15 +1,16 @@
 <%--
     Document   : checkout
     Created on : May 21, 2010, 12:20:23 AM
-    Author     : tgiunipero
+    Author     : tgiunip
 --%>
 
 
 <div class="row">
-    <div class="col-md-6 col-xs-12">
+    <div class="col-md-6 col-xs-12 col-lg-offset-1" align="left">
         <br>
-        <span class="label label-success label-as-badge" id="checkout_badge">checkout</span>
+        <span class="label label-success label-as-badge" id="checkout_badge">Checkout</span>
     </div>
+</div>
     <div id="myModal" class="modal fade">
     <div class="modal-dialog">
             <div class="modal-content">
@@ -22,23 +23,23 @@
             <table class="table table-striped table-bordered" cellspacing="0" width="80%">
           <thead>
             <tr>      
-                <th>description</th>
+                <th>Description</th>
                 <th><span class="glyphicon glyphicon-euro"></span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-                <td>subtotal:</td>
+                <td>Subtotal:</td>
                 <td class="checkoutPriceColumn">
                     &euro; ${cart.subtotal}</td>
             </tr>
             <tr>
-                <td>delivery surcharge:</td>
+                <td>Delivery Surcharge:</td>
                 <td class="checkoutPriceColumn">
                     &euro; ${initParam.deliverySurcharge}</td>
             </tr>
             <tr>
-                <td class="total">total:</td>
+                <td class="total">Total:</td>
                 <td class="total checkoutPriceColumn">
                     &euro; ${cart.total}</td>
             </tr>
@@ -55,16 +56,13 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xs-12">
-        
-
-        
-    </div>
+     
             
-    <div class="col-md-6 col-xs-12">
-        <p>To order, please provide us with the following information:</p>
+   <div class="row>">         
+    <div class="col-md-12 col-xs-12">
+        <strong>To order, please provide us with the following information:</strong>
     </div>
-            
+</div>  
             <div class="row" id="check_row">
         <div class="col-lg-12">  
     <form action="<c:url value='purchase'/>" method="post">
@@ -72,44 +70,44 @@
             
             <tbody class="col-md-4 col-sm-6" id="check1">
             <tr>
-                <td><label for="fname">forename:</label></td>
+                <td><label for="fname">First Name:</label></td>
                 <td class="input-group">
                     <input type="text"
                            class="form-control input-group-lg"
-                           
+                           placeholder="Enter First Name"
                            id="fname"
                            name="fname"
                            value="${param.fname}">
                 </td>
             </tr>
             <tr>
-                <td><label for="lname">surname:</label></td>
+                <td><label for="lname">Surname:</label></td>
                 <td class="input-group">
                     <input type="text"
                            class="form-control input-group-lg"
-                          
+                           placeholder="Enter Last Name"
                            id="lname"
                            name="lname"
                            value="${param.lname}">
                 </td>
             </tr>
             <tr>
-                <td><label for="name">password:</label></td>
+                <td><label for="name">Password:</label></td>
                 <td class="input-group">
                     <input type="text"
-                          class="form-control input-group-lg"
-                          
+                           class="form-control input-group-lg"
+                           placeholder="Enter Password"
                            id="pass"
                            name="pass"
                            value="${param.pass}">
                 </td>
             </tr>
             <tr>
-                <td><label for="email">email:</label></td>
+                <td><label for="email">Email:</label></td>
                 <td class="input-group">
                     <input type="text"
                            class="form-control input-group-lg"
-                       
+                           placeholder="Enter Email Address"
                            id="email"
                            name="email"
                            value="${param.email}">
@@ -119,17 +117,18 @@
             <tbody class="col-md-4 col-sm-6" id="check2">
             
             <tr>
-                <td><label for="addresstype">address type:</label></td>
+                <td><label for="addresstype">Address Type:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
                            id="addresstype"
+                           placeholder="Enter Residential Address"
                            name="addresstype"
                            value="${param.addresstype}">
                 </td>
             </tr>
             <tr>
-                <td><label for="address1">address line 1:</label></td>
+                <td><label for="address1">Address Line 1:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
@@ -139,7 +138,7 @@
                 </td>
             </tr>
             <tr>
-                <td><label for="address2">address line 2:</label></td>
+                <td><label for="address2">Address Line 2:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
@@ -149,21 +148,23 @@
                 </td>
             </tr>
             <tr>
-                <td><label for="towncity">town or city:</label></td>
+                <td><label for="towncity">Town or City:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
                            id="towncity"
+                           placeholder="Enter Name of Town/City"
                            name="towncity"
                            value="${param.towncity}">
                 </td>
             </tr>
             <tr>
-                <td><label for="county">county:</label></td>
+                <td><label for="county">Country:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
                            id="county"
+                           placeholder="Enter Residential Country"
                            name="county"
                            value="${param.county}">
                 </td>
@@ -172,41 +173,45 @@
             <tbody class="col-md-4 col-sm-6" id="check3">
             
             <tr>
-                <td><label for="creditcardNo">cc-num:</label></td>
+                <td><label for="creditcardNo">Credit Card Number:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
                            id="creditcardNo"
+                           placeholder="Enter Credit Card Number"
                            name="creditcardNo"
                            value="${param.creditcardNo}">
                 </td>
             </tr>
             <tr>
-                <td><label for="ccExp">cc-exp:</label></td>
+                <td><label for="ccExp">Credit Card Expiry:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
                            id="ccExp"
+                           placeholder="Enter Credit Card Expiry"
                            name="ccExp"
                            value="${param.ccExp}">
                 </td>
             </tr>
             <tr>
-                <td><label for="ccCvv">cc-cvv:</label></td>
+                <td><label for="ccCvv">Credit Card CCV Number:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
                            id="ccCvv"
+                           placeholder="See Reverse of Card"
                            name="ccCvv"
                            value="${param.ccCvv}">
                 </td>
             </tr>
             <tr>
-                <td><label for="ccName">name:</label></td>
+                <td><label for="ccName">Name of Cardholder:</label></td>
                 <td class="inputField">
                     <input type="text"
                            class="form-control input-group-lg"
                            id="ccName"
+                           placeholder="Enter Name on Card"
                            name="ccName"
                            value="${param.ccName}">
                 </td>

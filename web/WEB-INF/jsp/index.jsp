@@ -19,7 +19,7 @@
                         <span class="categoryLabel"></span>
                         <span class="categoryLabelText">${category.name}</span>
                         <img src="${initParam.categoryImagePath}${category.name}.png"
-                                 alt="${category.name}" class="categoryImage">
+                                 alt="${category.name}" class="img-thumbnail">
                         </a>
                     </div>
                 </c:forEach>

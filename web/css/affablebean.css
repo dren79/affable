@@ -54,7 +54,7 @@ label { line-height: 30px }
 
 /* general styles */
 #main { 
-    background: #eee ;
+    background: #E6E6E6 ;
     height: 80%;      
 }
 
@@ -139,19 +139,22 @@ label { line-height: 30px }
 
 .active{
     font-size: 25px;
-    color: #ff371d
+    color: black;
 }
 
 .nav-justified{
-    color: blue;
+    
+    color: black;
     background-color: lightblue;
     width: auto;
+    font-weight: bold;
     
 }
 
 #video_div{
     height: 100%;
     padding: 2%;
+    
 }
 /* styles for elements contained in the header, i.e.,
    shopping cart widget, language toggle, and logo */
@@ -243,7 +246,7 @@ iframe{
     height: 15%;
     width: 100%;
     clear: both;
-    background: #CC9980;
+    background: #855C33;
 }
 
 #footerText { margin-top: 5px }
@@ -459,4 +462,9 @@ body{background-image:url("../img/school2.png");
 
 .btn-group{
     padding-top: 1%;
+}
+
+
+.delivery{
+    background-color: green;
 }
