@@ -23,7 +23,20 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/affablebean.css">
         <link rel="shortcut icon" href="img/favicon.ico">
+<<<<<<< HEAD
         
+=======
+        <script type="text/javascript">
+            $(document).ready(function(){
+                    $("#myModal").modal('show');
+            });
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script>
+            var map = new google.maps.Map();
+            function initialize() {}
+            </script>
+>>>>>>> origin/Dev3
 
         <title>The UniStore</title>
     </head>
@@ -124,7 +137,11 @@
                     </div>
                         <div class="row">
                             <div class="col-md-12">
+<<<<<<< HEAD
                                 <div class="col-xs-2 col-sm-3 col-md-4 col-lg-5 " id="logo">
+=======
+                                <div class="col-xs-1 col-sm-2 col-md-3 col-lg-4 " id="logo">
+>>>>>>> origin/Dev3
                                         <a href="<c:url value='/'/>">
                                             <img src="img/nuig logo.jpg" class="img-responsive-5 img-responsive-6" >
                                         </a>

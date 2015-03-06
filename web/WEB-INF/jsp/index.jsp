@@ -19,7 +19,11 @@
                         <span class="categoryLabel"></span>
                         <span class="categoryLabelText">${category.name}</span>
                         <img src="${initParam.categoryImagePath}${category.name}.png"
+<<<<<<< HEAD
                                  alt="${category.name}" class="categoryImage">
+=======
+                                 alt="${category.name}" class="img-thumbnail">
+>>>>>>> origin/Dev3
                         </a>
                     </div>
                 </c:forEach>

@@ -54,7 +54,11 @@
                 <th>Swag</th>
                 <th>Description</th>
                 <th><span class="glyphicon glyphicon-euro"></span></th>
+<<<<<<< HEAD
                 <th><span class="glyphicon glyphicon-thumbs-up"></span></th>
+=======
+                <th><span class="glyphicon glyphicon-shopping-cart"></span></th>
+>>>>>>> origin/Dev3
             </tr>
           </thead>
           <tbody>
@@ -79,7 +83,7 @@
                                            name="productId"
                                            value="${product.productid}">
                                     <input type="submit"
-                                           value="add to cart">
+                                           value="Add To Cart">
                                 </form>
                             </td>
                         </tr>

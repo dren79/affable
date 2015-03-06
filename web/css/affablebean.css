@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : david
 */
 
+
+
 body {
     
     font-family: Arial, Helvetica, sans-serif;
@@ -52,7 +54,11 @@ label { line-height: 30px }
 
 /* general styles */
 #main { 
+<<<<<<< HEAD
     background: #eee ;
+=======
+    background: #E6E6E6 ;
+>>>>>>> origin/Dev3
     height: 80%;      
 }
 
@@ -102,8 +108,53 @@ label { line-height: 30px }
     width: 100%; 
     max-height: 100px;
     
+<<<<<<< HEAD
 }
 
+.img-responsive-5{
+    padding: 5%;
+    width:100%;
+    max-width: 300px;  
+    min-width: 80px;
+}
+.img-responsive-6 { 
+    padding: 5%;
+    width: 100%; 
+    max-height: 300px;
+    min-height: 80px;
+    
+}
+
+.img-responsive-7{
+    padding-top: 5%;
+    width:100%;
+    max-width: 1100px;  
+    float: right;
+}
+.img-responsive-8 { 
+    width: 100%; 
+    max-height: 300px;
+    float: right;
+=======
+>>>>>>> origin/Dev3
+}
+#checkout_badge{
+    font-size: 40px;
+   
+}
+
+
+<<<<<<< HEAD
+.active{
+    font-size: 25px;
+    color: #ff371d
+}
+
+.nav-justified{
+    color: blue;
+    background-color: lightblue;
+    width: auto;
+=======
 .img-responsive-5{
     padding: 5%;
     width:100%;
@@ -137,19 +188,26 @@ label { line-height: 30px }
 
 .active{
     font-size: 25px;
-    color: #ff371d
+    color: black;
 }
 
 .nav-justified{
-    color: blue;
+    
+    color: black;
     background-color: lightblue;
     width: auto;
+    font-weight: bold;
+>>>>>>> origin/Dev3
     
 }
 
 #video_div{
     height: 100%;
     padding: 2%;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> origin/Dev3
 }
 /* styles for elements contained in the header, i.e.,
    shopping cart widget, language toggle, and logo */
@@ -241,7 +299,11 @@ iframe{
     height: 15%;
     width: 100%;
     clear: both;
+<<<<<<< HEAD
     background: #CC9980;
+=======
+    background: #855C33;
+>>>>>>> origin/Dev3
 }
 
 #footerText { margin-top: 5px }
@@ -457,4 +519,12 @@ body{background-image:url("../img/school2.png");
 
 .btn-group{
     padding-top: 1%;
+<<<<<<< HEAD
+=======
+}
+
+
+.delivery{
+    background-color: green;
+>>>>>>> origin/Dev3
 }
