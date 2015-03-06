@@ -65,20 +65,21 @@
     </div>
 </div>
 
-        <div class="container">
-        <div class="row">
-    <div class="col-md-6 col-xs-12 col-lg-offset-1" align="left">
+      
+<div class="row">
+    <div class="col-md-5 col-xs-12 col-md-offset-1" align="left">
         <br>
-        <div><h2>Delivery Address Summary</h2>
-                    <br><strong>First Name:</strong>${customer.fname}
-                    <br><strong>Last Name:</strong>${customer.lname}
-                    <br><strong>Address Line 1:</strong>${address.line1}
-                    <br><strong>Address Line 2:</strong>${address.line2}
-                    <br><strong>Town/City:</strong>${address.towncity}
-                    <br><strong>Email:</strong> ${customer.email}</br></span></div>
-    </div>
-</div>
+        <div>
+            <h2>Delivery Address Summary</h2>
+            <br><strong>First Name:</strong>${customer.fname}
+            <br><strong>Last Name:</strong>${customer.lname}
+            <br><strong>Address Line 1:</strong>${address.line1}
+            <br><strong>Address Line 2:</strong>${address.line2}
+            <br><strong>Town/City:</strong>${address.towncity}
+            <br><strong>Email:</strong> ${customer.email}</br></div>
         </div>
+
+       
         
 
 <div id="singleColum">
@@ -125,9 +126,9 @@
         </table>
       </div>
     </div>
-    
+                  </div>  
   
           <div class="goomap"  id="map-canvas"></div>
     
-</div>
+
 
